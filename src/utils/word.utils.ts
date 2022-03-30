@@ -2,39 +2,33 @@ import words from '../5-letters.json';
 
 const MAX_WORD_LENGTH = 5;
 
-enum LetterStatus {
+enum LetterState {
 	MISS = 'MISS',
 	MATCH = 'MATCH',
-	EXISTS = 'EXISTS'
+	PRESENT = 'PRESENT'
 }
 
 function getRandomWord() {
-	return words[Math.floor(Math.random() * words.length)];
+	return words[Math.floor(Math.random() * words.length)].toUpperCase();
 }
 
-function evaluateGuess(answer: string, guesses: string[]): LetterStatus[][] {
-	const results: LetterStatus[][] = [];
+function evaluateGuess(answer: string, guess: string): LetterState[] {
+	const result: LetterState[] = [];
 
 	const answerLetters = answer.split('');
+	const guessLetters = guess.split('');
 
-	guesses.forEach((guess) => {
-		const guessLetters = guess.split('');
-
-		const guessResult: LetterStatus[] = [];
-		guessLetters.forEach((letter, index) => {
-			if (answerLetters[index] === letter) {
-				guessResult.push(LetterStatus.MATCH);
-			} else if (answerLetters.includes(letter)) {
-				guessResult.push(LetterStatus.EXISTS);
-			} else {
-				guessResult.push(LetterStatus.MISS);
-			}
-		});
-
-		results.push(guessResult);
+	guessLetters.forEach((letter, index) => {
+		if (answerLetters[index] === letter) {
+			result.push(LetterState.MATCH);
+		} else if (answerLetters.includes(letter)) {
+			result.push(LetterState.PRESENT);
+		} else {
+			result.push(LetterState.MISS);
+		}
 	});
 
-	return results;
+	return result;
 }
 
-export { evaluateGuess, getRandomWord, LetterStatus, MAX_WORD_LENGTH };
+export { evaluateGuess, getRandomWord, LetterState, MAX_WORD_LENGTH };

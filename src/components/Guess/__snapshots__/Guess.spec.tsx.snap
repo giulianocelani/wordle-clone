@@ -5,46 +5,46 @@ exports[`Guess default renders correctly 1`] = `
   className="grid grid-cols-5 gap-4"
 >
   <div
-    className="border rounded-md flex items-center justify-center w-16 h-16 undefined"
+    className="border rounded-md flex items-center justify-center w-16 h-16 "
   >
     <h2
-      className="font-semibold text-3xl text-white"
+      className="font-semibold text-3xl "
     >
       H
     </h2>
   </div>
   <div
-    className="border rounded-md flex items-center justify-center w-16 h-16 undefined"
+    className="border rounded-md flex items-center justify-center w-16 h-16 "
   >
     <h2
-      className="font-semibold text-3xl text-white"
+      className="font-semibold text-3xl "
     >
       E
     </h2>
   </div>
   <div
-    className="border rounded-md flex items-center justify-center w-16 h-16 undefined"
+    className="border rounded-md flex items-center justify-center w-16 h-16 "
   >
     <h2
-      className="font-semibold text-3xl text-white"
+      className="font-semibold text-3xl "
     >
       L
     </h2>
   </div>
   <div
-    className="border rounded-md flex items-center justify-center w-16 h-16 undefined"
+    className="border rounded-md flex items-center justify-center w-16 h-16 "
   >
     <h2
-      className="font-semibold text-3xl text-white"
+      className="font-semibold text-3xl "
     >
       L
     </h2>
   </div>
   <div
-    className="border rounded-md flex items-center justify-center w-16 h-16 undefined"
+    className="border rounded-md flex items-center justify-center w-16 h-16 "
   >
     <h2
-      className="font-semibold text-3xl text-white"
+      className="font-semibold text-3xl "
     >
       O
     </h2>

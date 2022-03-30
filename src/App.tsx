@@ -1,9 +1,9 @@
 import { ErrorBoundary, Grid } from './components';
-import { getRandomWord } from './utils';
-
-const answer = getRandomWord();
+import useStore from './store';
 
 const App = () => {
+	const { answer } = useStore();
+
 	return (
 		<div className='container mx-auto overflow-hidden flex flex-col h-full'>
 			<h1 className='text-5xl font-bold text-center my-4 pb-4 border-b flex-none'>
@@ -14,7 +14,7 @@ const App = () => {
 					Answer:
 					<span className='ml-1 font-light'>{answer}</span>
 				</p>
-				<Grid answer={answer} />
+				<Grid />
 			</ErrorBoundary>
 		</div>
 	);

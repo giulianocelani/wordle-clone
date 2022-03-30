@@ -1,25 +1,28 @@
-import { LetterStatus, MAX_WORD_LENGTH } from '../../utils';
+import { IGuess } from '../../store';
+import { MAX_WORD_LENGTH } from '../../utils';
 import Letter from '../Letter';
 
 type IProps = {
-	guess: string;
-	states: LetterStatus[];
+	guess: IGuess;
 };
 
-const Guess = ({ guess, states }: IProps) => {
-	const letters = guess ? guess.split('') : [];
+const Guess = ({ guess }: IProps) => {
+	const letters = guess.word ? guess.word.split('') : [];
+
+	const letterList = [
+		...letters,
+		...Array(MAX_WORD_LENGTH - letters.length).fill('')
+	];
 
 	return (
 		<div className='grid grid-cols-5 gap-4'>
-			{[...letters, ...Array(MAX_WORD_LENGTH - letters.length).fill(null)].map(
-				(letter, index) => (
-					<Letter
-						key={`guess-${index}`}
-						letter={letter}
-						state={states[index] || []}
-					/>
-				)
-			)}
+			{letterList.map((letter, index) => (
+				<Letter
+					key={`letter-${index}`}
+					letter={letter}
+					state={guess.state && guess.state[index]}
+				/>
+			))}
 		</div>
 	);
 };

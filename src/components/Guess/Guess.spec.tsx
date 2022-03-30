@@ -6,7 +6,7 @@ import { MAX_WORD_LENGTH } from '../../utils';
 import Guess from '.';
 
 describe('Guess', () => {
-	const wrapper = mount(<Guess guess='HELLO' states={[]} />);
+	const wrapper = mount(<Guess guess={{ word: 'HELLO' }} />);
 
 	it('default renders correctly', () => {
 		expect(toJson(wrapper, { mode: 'deep' })).toMatchSnapshot();
