@@ -1,7 +1,7 @@
 import { mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 
-import { LetterStatus } from '../../utils';
+import { LetterState } from '../../utils';
 
 import Letter from '.';
 
@@ -29,7 +29,7 @@ describe('Letter', () => {
 	});
 
 	it('MATCH renders correctly', () => {
-		wrapper = mount(<Letter letter='A' state={LetterStatus.MATCH} />);
+		wrapper = mount(<Letter letter='A' state={LetterState.MATCH} />);
 		expect(toJson(wrapper, { mode: 'deep' })).toMatchSnapshot();
 
 		expect(wrapper.exists('.bg-green-500')).toBeTruthy();
@@ -44,7 +44,7 @@ describe('Letter', () => {
 	});
 
 	it('MISSING renders correctly', () => {
-		wrapper = mount(<Letter letter='A' state={LetterStatus.MISS} />);
+		wrapper = mount(<Letter letter='A' state={LetterState.MISS} />);
 		expect(toJson(wrapper, { mode: 'deep' })).toMatchSnapshot();
 
 		expect(wrapper.exists('.bg-red-500')).toBeTruthy();
@@ -59,7 +59,7 @@ describe('Letter', () => {
 	});
 
 	it('EXISTS renders correctly', () => {
-		wrapper = mount(<Letter letter='A' state={LetterStatus.EXISTS} />);
+		wrapper = mount(<Letter letter='A' state={LetterState.PRESENT} />);
 		expect(toJson(wrapper, { mode: 'deep' })).toMatchSnapshot();
 
 		expect(wrapper.exists('.bg-yellow-500')).toBeTruthy();

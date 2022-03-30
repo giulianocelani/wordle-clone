@@ -1,14 +1,14 @@
-import { LetterStatus } from '../../utils';
+import { LetterState } from '../../utils';
 
 type IProps = {
 	letter: string;
-	state?: LetterStatus;
+	state?: LetterState;
 };
 
-const StateToColorMapping: Record<LetterStatus, string> = {
-	[LetterStatus.EXISTS]: 'bg-yellow-500 border-yellow-500',
-	[LetterStatus.MATCH]: 'bg-green-500 border-green-500',
-	[LetterStatus.MISS]: 'bg-red-500 border-red-500'
+const StateToColorMapping: Record<LetterState, string> = {
+	[LetterState.PRESENT]: 'bg-yellow-500 border-yellow-500',
+	[LetterState.MATCH]: 'bg-green-500 border-green-500',
+	[LetterState.MISS]: 'bg-red-500 border-red-500'
 };
 
 const Letter = ({ letter, state }: IProps) => {

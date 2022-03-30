@@ -1,7 +1,8 @@
+/* eslint-disable global-require */
 module.exports = {
 	content: ['./src/**/*.{ts,tsx}'],
 	theme: {
 		extend: {}
 	},
-	plugins: []
+	plugins: [require('flowbite/plugin')]
 };
