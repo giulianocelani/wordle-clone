@@ -15,8 +15,8 @@ describe('Letter', () => {
 		expect(wrapper.exists('.border-green-500')).toBeFalsy();
 		expect(wrapper.exists('.bg-yellow-500')).toBeFalsy();
 		expect(wrapper.exists('.border-yellow-500')).toBeFalsy();
-		expect(wrapper.exists('.bg-red-500')).toBeFalsy();
-		expect(wrapper.exists('.border-red-500')).toBeFalsy();
+		expect(wrapper.exists('.bg-gray-500')).toBeFalsy();
+		expect(wrapper.exists('.border-gray-500')).toBeFalsy();
 
 		expect(wrapper.find('h2').exists('.text-white')).toBeFalsy();
 	});
@@ -37,8 +37,8 @@ describe('Letter', () => {
 
 		expect(wrapper.exists('.bg-yellow-500')).toBeFalsy();
 		expect(wrapper.exists('.border-yellow-500')).toBeFalsy();
-		expect(wrapper.exists('.bg-red-500')).toBeFalsy();
-		expect(wrapper.exists('.border-red-500')).toBeFalsy();
+		expect(wrapper.exists('.bg-gray-500')).toBeFalsy();
+		expect(wrapper.exists('.border-gray-500')).toBeFalsy();
 
 		expect(wrapper.find('h2').exists('.text-white')).toBeTruthy();
 	});
@@ -47,8 +47,8 @@ describe('Letter', () => {
 		wrapper = mount(<Letter letter='A' state={LetterState.MISS} />);
 		expect(toJson(wrapper, { mode: 'deep' })).toMatchSnapshot();
 
-		expect(wrapper.exists('.bg-red-500')).toBeTruthy();
-		expect(wrapper.exists('.border-red-500')).toBeTruthy();
+		expect(wrapper.exists('.bg-gray-500')).toBeTruthy();
+		expect(wrapper.exists('.border-gray-500')).toBeTruthy();
 
 		expect(wrapper.exists('.bg-green-500')).toBeFalsy();
 		expect(wrapper.exists('.border-green-500')).toBeFalsy();
@@ -67,8 +67,8 @@ describe('Letter', () => {
 
 		expect(wrapper.exists('.bg-green-500')).toBeFalsy();
 		expect(wrapper.exists('.border-green-500')).toBeFalsy();
-		expect(wrapper.exists('.bg-red-500')).toBeFalsy();
-		expect(wrapper.exists('.border-red-500')).toBeFalsy();
+		expect(wrapper.exists('.bg-gray-500')).toBeFalsy();
+		expect(wrapper.exists('.border-gray-500')).toBeFalsy();
 
 		expect(wrapper.find('h2').exists('.text-white')).toBeTruthy();
 	});
