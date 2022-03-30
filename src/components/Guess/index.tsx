@@ -1,19 +1,23 @@
-import { MAX_WORD_LENGTH } from '../../utils';
+import { LetterStatus, MAX_WORD_LENGTH } from '../../utils';
 import Letter from '../Letter';
 
 type IProps = {
 	guess: string;
+	states: LetterStatus[];
 };
 
-const Guess = ({ guess }: IProps) => {
+const Guess = ({ guess, states }: IProps) => {
 	const letters = guess ? guess.split('') : [];
 
 	return (
 		<div className='grid grid-cols-5 gap-4'>
-			{[...letters, ...Array(MAX_WORD_LENGTH - letters.length).fill('')].map(
+			{[...letters, ...Array(MAX_WORD_LENGTH - letters.length).fill(null)].map(
 				(letter, index) => (
-					// eslint-disable-next-line react/no-array-index-key
-					<Letter key={`guess-${index}`} letter={letter} />
+					<Letter
+						key={`guess-${index}`}
+						letter={letter}
+						state={states[index] || []}
+					/>
 				)
 			)}
 		</div>

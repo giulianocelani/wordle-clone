@@ -56,7 +56,8 @@ module.exports = {
 		],
 		'promise/catch-or-return': 'off',
 		'promise/always-return': 'off',
-		'no-console': 'off'
+		'no-console': 'off',
+		'react/no-array-index-key': 'off'
 	},
 	parserOptions: {
 		ecmaVersion: 2020,
