@@ -55,7 +55,8 @@ module.exports = {
 			}
 		],
 		'promise/catch-or-return': 'off',
-		'promise/always-return': 'off'
+		'promise/always-return': 'off',
+		'no-console': 'off'
 	},
 	parserOptions: {
 		ecmaVersion: 2020,
