@@ -3,7 +3,7 @@ import words from '../5-letters.json';
 const MAX_WORD_LENGTH = 5;
 
 enum LetterStatus {
-	MISSING = 'MISSING',
+	MISS = 'MISS',
 	MATCH = 'MATCH',
 	EXISTS = 'EXISTS'
 }
@@ -27,7 +27,7 @@ function evaluateGuess(answer: string, guesses: string[]): LetterStatus[][] {
 			} else if (answerLetters.includes(letter)) {
 				guessResult.push(LetterStatus.EXISTS);
 			} else {
-				guessResult.push(LetterStatus.MISSING);
+				guessResult.push(LetterStatus.MISS);
 			}
 		});
 
