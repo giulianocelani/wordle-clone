@@ -43,7 +43,7 @@ const Grid = () => {
 		});
 	}
 
-	const numberOfGuessesRemaining = MAX_GUESSES - guesses.length;
+	const numberOfGuessesRemaining = MAX_GUESSES - alreadyGuessed.length;
 	guesses = guesses.concat(Array(numberOfGuessesRemaining).fill(''));
 
 	return (
