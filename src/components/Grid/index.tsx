@@ -1,9 +1,10 @@
+import { getRandomWord } from '../../utils';
 import Guess from '../Guess';
 
 const MAX_GUESSES = 6;
 
 const Grid = () => {
-	const guesses = ['GUESS'];
+	const guesses = [getRandomWord()];
 
 	return (
 		<div className='flex-1 flex items-start justify-center py-10'>
