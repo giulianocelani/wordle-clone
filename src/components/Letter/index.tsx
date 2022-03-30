@@ -1,13 +1,32 @@
+import { LetterStatus } from '../../utils';
+
 type IProps = {
 	letter: string;
+	state?: LetterStatus;
 };
 
-const Letter = ({ letter }: IProps) => {
+const StateToColorMapping: Record<LetterStatus, string> = {
+	[LetterStatus.EXISTS]: 'bg-yellow-500 border-yellow-500',
+	[LetterStatus.MATCH]: 'bg-green-500 border-green-500',
+	[LetterStatus.MISSING]: 'bg-red-500 border-red-500'
+};
+
+const Letter = ({ letter, state }: IProps) => {
 	return (
-		<div className='border rounded-md flex items-center justify-center w-16 h-16'>
-			<h2 className='font-semibold text-3xl'>{letter}</h2>
+		<div
+			className={`border rounded-md flex items-center justify-center w-16 h-16 ${
+				state && StateToColorMapping[state]
+			}`}
+		>
+			<h2 className={`font-semibold text-3xl ${state && 'text-white'}`}>
+				{letter}
+			</h2>
 		</div>
 	);
+};
+
+Letter.defaultProps = {
+	state: undefined
 };
 
 export default Letter;
