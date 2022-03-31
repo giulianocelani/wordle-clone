@@ -1,4 +1,9 @@
-import { evaluateGuess, getRandomWord, LetterState } from '../word.utils';
+import {
+	evaluateGuess,
+	getRandomWord,
+	isValidWord,
+	LetterState
+} from '../word.utils';
 
 describe('word-utils', () => {
 	describe('getRandomWord', () => {
@@ -49,6 +54,16 @@ describe('word-utils', () => {
 				LetterState.MATCH,
 				LetterState.MISS
 			]);
+		});
+	});
+	describe('isValidWord', () => {
+		it('returns true when word is valid', () => {
+			const result = isValidWord('alive');
+			expect(result).toBeTruthy();
+		});
+		it('returns false when word is invalid', () => {
+			const result = isValidWord('italy');
+			expect(result).toBeFalsy();
 		});
 	});
 });

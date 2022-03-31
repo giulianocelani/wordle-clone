@@ -8,7 +8,7 @@ exports[`Grid default renders correctly 1`] = `
     className="grid grid-rows-6 gap-4"
   >
     <div
-      className="grid grid-cols-5 gap-4"
+      className="grid grid-cols-5 gap-4 "
     >
       <div
         className="border rounded-md flex items-center justify-center w-16 h-16 "
@@ -47,7 +47,7 @@ exports[`Grid default renders correctly 1`] = `
       </div>
     </div>
     <div
-      className="grid grid-cols-5 gap-4"
+      className="grid grid-cols-5 gap-4 "
     >
       <div
         className="border rounded-md flex items-center justify-center w-16 h-16 "
@@ -86,7 +86,7 @@ exports[`Grid default renders correctly 1`] = `
       </div>
     </div>
     <div
-      className="grid grid-cols-5 gap-4"
+      className="grid grid-cols-5 gap-4 "
     >
       <div
         className="border rounded-md flex items-center justify-center w-16 h-16 "
@@ -125,7 +125,7 @@ exports[`Grid default renders correctly 1`] = `
       </div>
     </div>
     <div
-      className="grid grid-cols-5 gap-4"
+      className="grid grid-cols-5 gap-4 "
     >
       <div
         className="border rounded-md flex items-center justify-center w-16 h-16 "
@@ -164,7 +164,7 @@ exports[`Grid default renders correctly 1`] = `
       </div>
     </div>
     <div
-      className="grid grid-cols-5 gap-4"
+      className="grid grid-cols-5 gap-4 "
     >
       <div
         className="border rounded-md flex items-center justify-center w-16 h-16 "
@@ -203,7 +203,7 @@ exports[`Grid default renders correctly 1`] = `
       </div>
     </div>
     <div
-      className="grid grid-cols-5 gap-4"
+      className="grid grid-cols-5 gap-4 "
     >
       <div
         className="border rounded-md flex items-center justify-center w-16 h-16 "
