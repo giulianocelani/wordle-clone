@@ -1,10 +1,8 @@
 import { useState } from 'react';
 
-import useStore from '../../store';
+import useStore, { MAX_GUESSES } from '../../store';
 import { MAX_WORD_LENGTH } from '../../utils';
 import Guess from '../Guess';
-
-const MAX_GUESSES = 6;
 
 type IState = {
 	currentGuess: string;
@@ -43,23 +41,22 @@ const Grid = () => {
 		});
 	}
 
-	const numberOfGuessesRemaining = MAX_GUESSES - alreadyGuessed.length;
+	const numberOfGuessesRemaining = MAX_GUESSES - guesses.length;
 	guesses = guesses.concat(Array(numberOfGuessesRemaining).fill(''));
 
 	return (
-		<div className='flex-1 flex flex-col items-center justify-start py-10 mx-auto'>
+		<div className='flex-1 flex flex-col items-center justify-start py-5 mx-auto'>
 			<div className='mb-6 w-full flex space-x-2'>
 				<input
 					type='text'
-					id='guess'
 					className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5'
-					required
 					value={currentGuess}
 					onChange={onGuessChange}
 					autoComplete='off'
 					maxLength={MAX_WORD_LENGTH}
-					disabled={numberOfGuessesRemaining === 0}
+					disabled={numberOfGuessesRemaining + 1 === 0}
 				/>
+
 				<button
 					type='button'
 					className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center disabled:bg-gray-300'
