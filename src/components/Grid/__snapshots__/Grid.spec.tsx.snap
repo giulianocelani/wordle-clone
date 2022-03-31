@@ -2,7 +2,7 @@
 
 exports[`Grid default renders correctly 1`] = `
 <div
-  className="flex-1 flex flex-col items-center justify-start py-10 mx-auto"
+  className="flex-1 flex flex-col items-center justify-start py-5 mx-auto"
 >
   <div
     className="mb-6 w-full flex space-x-2"
@@ -11,10 +11,8 @@ exports[`Grid default renders correctly 1`] = `
       autoComplete="off"
       className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
       disabled={false}
-      id="guess"
       maxLength={5}
       onChange={[Function]}
-      required={true}
       type="text"
       value=""
     />
