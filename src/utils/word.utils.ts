@@ -13,18 +13,25 @@ function getRandomWord() {
 }
 
 function evaluateGuess(answer: string, guess: string): LetterState[] {
-	const result: LetterState[] = [];
+	if (answer.length !== guess.length && guess.length !== MAX_WORD_LENGTH) {
+		return [];
+	}
 
-	const answerLetters = answer.split('');
+	const result: LetterState[] = Array(MAX_WORD_LENGTH).fill(LetterState.MISS);
+
+	const lettersToCheck = answer.split('');
 	const guessLetters = guess.split('');
 
-	guessLetters.forEach((letter, index) => {
-		if (answerLetters[index] === letter) {
-			result.push(LetterState.MATCH);
-		} else if (answerLetters.includes(letter)) {
-			result.push(LetterState.PRESENT);
-		} else {
-			result.push(LetterState.MISS);
+	guessLetters.forEach((_letter, i) => {
+		if (answer[i] === guessLetters[i]) {
+			result[i] = LetterState.MATCH;
+			lettersToCheck.splice(i, 1);
+		}
+	});
+	guessLetters.forEach((letter, i) => {
+		if (lettersToCheck.includes(letter) && result[i] !== LetterState.MATCH) {
+			result[i] = LetterState.PRESENT;
+			lettersToCheck.splice(lettersToCheck.indexOf(letter), 1);
 		}
 	});
 

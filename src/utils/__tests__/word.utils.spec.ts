@@ -8,15 +8,15 @@ describe('word-utils', () => {
 		});
 	});
 	describe('evaluateGuess', () => {
-		it('return all misses', () => {
+		it('returns all misses', () => {
 			const result = evaluateGuess('HELLO', 'FIRST');
 			expect(result).toEqual(Array(5).fill(LetterState.MISS));
 		});
-		it('return all matches', () => {
+		it('returns all matches', () => {
 			const result = evaluateGuess('HELLO', 'HELLO');
 			expect(result).toEqual(Array(5).fill(LetterState.MATCH));
 		});
-		it('return some matches, misses and exists', () => {
+		it('returns some matches, misses and exists', () => {
 			const result = evaluateGuess('FIRST', 'FLOOR');
 			expect(result).toEqual([
 				LetterState.MATCH,
@@ -24,6 +24,30 @@ describe('word-utils', () => {
 				LetterState.MISS,
 				LetterState.MISS,
 				LetterState.PRESENT
+			]);
+		});
+		it('returns empty array when given incomplete guess', () => {
+			const result = evaluateGuess('boost', 'an');
+			expect(result).toEqual([]);
+		});
+		it('when 2 letters are present but answer has only 1 of those letters', () => {
+			const result = evaluateGuess('relax', 'sweep');
+			expect(result).toEqual([
+				LetterState.MISS,
+				LetterState.MISS,
+				LetterState.PRESENT,
+				LetterState.MISS,
+				LetterState.MISS
+			]);
+		});
+		it('when 1 letter matches but guess has more of the same letter', () => {
+			const result = evaluateGuess('colon', 'allol');
+			expect(result).toEqual([
+				LetterState.MISS,
+				LetterState.MISS,
+				LetterState.MATCH,
+				LetterState.MATCH,
+				LetterState.MISS
 			]);
 		});
 	});
