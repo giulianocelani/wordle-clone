@@ -1,11 +1,15 @@
-import React from 'react';
-
 import { mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 
+import useGuess from '../../hooks/useGuess';
+
 import Grid from '.';
 
+jest.mock('../../hooks/useGuess');
+const mockUseGuess = useGuess as jest.MockedFunction<typeof useGuess>;
+
 describe('Grid', () => {
+	mockUseGuess.mockReturnValue(['', () => {}]);
 	let wrapper = mount(<Grid />);
 
 	it('default renders correctly', () => {
@@ -20,7 +24,7 @@ describe('Grid', () => {
 	});
 
 	it('renders current guess', () => {
-		React.useState = jest.fn().mockReturnValue([{ currentGuess: 'HELL' }, {}]);
+		mockUseGuess.mockReturnValue(['HELL', () => {}]);
 		wrapper = mount(<Grid />);
 		expect(
 			wrapper.find('div.grid-rows-6').childAt(0).props().guess.word
