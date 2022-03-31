@@ -1,7 +1,10 @@
+import CryptoJS from 'crypto-js';
 import create from 'zustand';
 import { persist } from 'zustand/middleware';
 
 import { evaluateGuess, getRandomWord, LetterState } from './utils';
+
+const secret = CryptoJS.enc.Utf8.parse(process.env.REACT_APP_SECRET || '');
 
 export const MAX_GUESSES = 6;
 
@@ -49,7 +52,27 @@ const useStore = create<IStoreState>(
 				}))
 		}),
 		{
-			name: 'wordle-clone-storage'
+			name: 'wordle-clone-storage',
+			serialize: (state) => {
+				return CryptoJS.AES.encrypt(JSON.stringify(state), secret, {
+					keySize: 128 / 8,
+					iv: secret,
+					mode: CryptoJS.mode.CBC,
+					padding: CryptoJS.pad.Pkcs7
+				}).toString();
+			},
+			deserialize: (state) => {
+				return JSON.parse(
+					CryptoJS.enc.Utf8.stringify(
+						CryptoJS.AES.decrypt(state, secret, {
+							keySize: 128 / 8,
+							iv: secret,
+							mode: CryptoJS.mode.CBC,
+							padding: CryptoJS.pad.Pkcs7
+						})
+					)
+				);
+			}
 		}
 	)
 );
