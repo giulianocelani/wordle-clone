@@ -1,43 +1,27 @@
-import { useState } from 'react';
-
+import { useGuess } from '../../hooks';
 import useStore, { MAX_GUESSES } from '../../store';
 import { MAX_WORD_LENGTH } from '../../utils';
 import Guess from '../Guess';
 
-type IState = {
-	currentGuess: string;
-};
-
-const INITIAL_STATE: IState = {
-	currentGuess: ''
-};
-
 const Grid = () => {
-	const [{ currentGuess }, setState] = useState<IState>(INITIAL_STATE);
 	const { alreadyGuessed, addGuess } = useStore();
+	const [guess, setGuess] = useGuess();
 
 	const onGuessChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		e.preventDefault();
-		const value = e.target.value.toUpperCase();
-		setState((prevState) => ({
-			...prevState,
-			currentGuess: value
-		}));
+		setGuess(e.target.value.toUpperCase());
 	};
 
 	const onGuess = () => {
-		addGuess(currentGuess);
-		setState((prevState) => ({
-			...prevState,
-			currentGuess: ''
-		}));
+		addGuess(guess);
+		setGuess('');
 	};
 
 	let guesses = [...alreadyGuessed];
 
 	if (guesses.length < MAX_GUESSES) {
 		guesses.push({
-			word: currentGuess
+			word: guess
 		});
 	}
 
@@ -50,7 +34,7 @@ const Grid = () => {
 				<input
 					type='text'
 					className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5'
-					value={currentGuess}
+					value={guess}
 					onChange={onGuessChange}
 					autoComplete='off'
 					maxLength={MAX_WORD_LENGTH}
@@ -61,7 +45,7 @@ const Grid = () => {
 					type='button'
 					className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center disabled:bg-gray-300'
 					onClick={onGuess}
-					disabled={currentGuess.length < MAX_WORD_LENGTH}
+					disabled={guess.length < MAX_WORD_LENGTH}
 				>
 					<svg
 						xmlns='http://www.w3.org/2000/svg'
@@ -78,8 +62,8 @@ const Grid = () => {
 				</button>
 			</div>
 			<div className='grid grid-rows-6 gap-4'>
-				{guesses.map((guess, index) => (
-					<Guess key={`guess-${index}`} guess={guess} />
+				{guesses.map((g, index) => (
+					<Guess key={`guess-${index}`} guess={g} />
 				))}
 			</div>
 		</div>
