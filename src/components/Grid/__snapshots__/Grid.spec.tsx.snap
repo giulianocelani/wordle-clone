@@ -5,38 +5,6 @@ exports[`Grid default renders correctly 1`] = `
   className="flex-1 flex flex-col items-center justify-start py-5 mx-auto"
 >
   <div
-    className="mb-6 w-full flex space-x-2"
-  >
-    <input
-      autoComplete="off"
-      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-      disabled={false}
-      maxLength={5}
-      onChange={[Function]}
-      type="text"
-      value=""
-    />
-    <button
-      className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center disabled:bg-gray-300"
-      disabled={true}
-      onClick={[Function]}
-      type="button"
-    >
-      <svg
-        className="h-5 w-5"
-        fill="currentColor"
-        viewBox="0 0 20 20"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          clipRule="evenodd"
-          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-          fillRule="evenodd"
-        />
-      </svg>
-    </button>
-  </div>
-  <div
     className="grid grid-rows-6 gap-4"
   >
     <div
