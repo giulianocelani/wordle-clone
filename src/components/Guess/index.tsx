@@ -4,9 +4,10 @@ import Letter from '../Letter';
 
 type IProps = {
 	guess: IGuess;
+	isInvalid: boolean;
 };
 
-const Guess = ({ guess }: IProps) => {
+const Guess = ({ guess, isInvalid }: IProps) => {
 	const letters = guess.word ? guess.word.split('') : [];
 
 	const letterList = [
@@ -15,7 +16,9 @@ const Guess = ({ guess }: IProps) => {
 	];
 
 	return (
-		<div className='grid grid-cols-5 gap-4'>
+		<div
+			className={`grid grid-cols-5 gap-4 ${isInvalid ? 'animate-shake' : ''}`}
+		>
 			{letterList.map((letter, index) => (
 				<Letter
 					key={`letter-${index}`}

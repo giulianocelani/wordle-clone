@@ -38,4 +38,14 @@ function evaluateGuess(answer: string, guess: string): LetterState[] {
 	return result;
 }
 
-export { evaluateGuess, getRandomWord, LetterState, MAX_WORD_LENGTH };
+function isValidWord(word: string): boolean {
+	return words.includes(word.toLowerCase());
+}
+
+export {
+	evaluateGuess,
+	getRandomWord,
+	isValidWord,
+	LetterState,
+	MAX_WORD_LENGTH
+};

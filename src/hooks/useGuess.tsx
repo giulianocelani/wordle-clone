@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 import { MAX_WORD_LENGTH } from '../utils';
 
-const useGuess = (): string => {
+const useGuess = (): [string, React.Dispatch<React.SetStateAction<string>>] => {
 	const [guess, setGuess] = useState<string>('');
 
 	const onKeyDown = (event: KeyboardEvent) => {
@@ -34,7 +34,7 @@ const useGuess = (): string => {
 		};
 	}, []);
 
-	return guess;
+	return [guess, setGuess];
 };
 
 export default useGuess;
