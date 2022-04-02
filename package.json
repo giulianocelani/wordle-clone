@@ -1,5 +1,5 @@
 {
-    "homepage": "https://giulianocelani.github.io/wordle-clone",
+	"homepage": "https://giulianocelani.github.io/wordle-clone",
 	"name": "wordle-clone",
 	"version": "1.0.0",
 	"private": true,
@@ -16,9 +16,7 @@
 		"lint:fix": "yarn run eslint --fix src",
 		"prepare": "husky install",
 		"start": "react-scripts start",
-		"test": "react-scripts test",
-        "predeploy": "yarn run build", 
-        "deploy": "gh-pages -d build"
+		"test": "react-scripts test"
 	},
 	"lint-staged": {
 		"*.{ts,tsx,js,jsx}": [
@@ -88,7 +86,6 @@
 		"eslint-plugin-react": "^7.27.1",
 		"eslint-plugin-react-hooks": "^4.3.0",
 		"eslint-plugin-simple-import-sort": "^7.0.0",
-		"gh-pages": "^3.2.3",
 		"husky": "^7.0.0",
 		"lint-staged": "^12.1.3",
 		"postcss": "^8.4.12",
