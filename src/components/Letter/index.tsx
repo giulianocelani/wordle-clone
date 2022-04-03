@@ -1,3 +1,5 @@
+import { mappings } from '../../constants';
+import useStore from '../../store';
 import { LetterState } from '../../utils';
 
 type IProps = {
@@ -5,20 +7,28 @@ type IProps = {
 	state?: LetterState;
 };
 
-const StateToColorMapping: Record<LetterState, string> = {
-	[LetterState.PRESENT]: 'bg-yellow-500 border-yellow-500',
-	[LetterState.MATCH]: 'bg-green-500 border-green-500',
-	[LetterState.MISS]: 'bg-gray-500 border-gray-500'
-};
-
 const Letter = ({ letter, state }: IProps) => {
+	const { keysPressed } = useStore();
+
+	const getWrapperStyle = () => {
+		const styles: string[] = [];
+		if (state) {
+			styles.push(mappings.StateToColor[state]);
+		} else if (keysPressed[letter] === LetterState.MISS) {
+			styles.push('bg-gray-100 border-gray-100');
+		}
+		return styles.join(' ');
+	};
+
 	return (
 		<div
-			className={`border rounded-md flex items-center justify-center w-16 h-16 ${
-				state ? StateToColorMapping[state] : ''
-			}`}
+			className={`border rounded-md flex items-center justify-center w-16 h-16 ${getWrapperStyle()}`}
 		>
-			<h2 className={`font-semibold text-3xl ${state ? 'text-white' : ''}`}>
+			<h2
+				className={`font-semibold text-3xl ${
+					state || keysPressed[letter] === LetterState.MISS ? 'text-white' : ''
+				}`}
+			>
 				{letter}
 			</h2>
 		</div>

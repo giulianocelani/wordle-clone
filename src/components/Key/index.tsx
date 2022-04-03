@@ -1,9 +1,42 @@
+/* eslint-disable default-case */
+import { mappings } from '../../constants';
+import useStore from '../../store';
+import { LetterState } from '../../utils';
+
 type IProps = {
 	letter: string;
 	onClick: (letter: string) => void;
 };
 
+const getKeyStyle = (
+	letter: string,
+	keysPressed: Record<string, LetterState>
+) => {
+	const styles: string[] = [];
+
+	if (
+		(typeof letter === 'string' && letter.length === 1) ||
+		letter === 'Backspace'
+	) {
+		styles.push('w-12 h-12');
+	}
+
+	if (keysPressed[letter]) {
+		styles.push('text-white');
+		if (keysPressed[letter] === LetterState.MISS) {
+			styles.push('hover:cursor-not-allowed');
+		}
+	} else {
+		styles.push('border hover:cursor-pointer hover:border-gray-400');
+	}
+
+	styles.push(mappings.StateToColor[keysPressed[letter]]);
+	return styles.join(' ');
+};
+
 const Key = ({ letter, onClick }: IProps) => {
+	const { keysPressed } = useStore();
+
 	const handleOnClick = () => {
 		if (typeof letter === 'string') {
 			onClick(letter);
@@ -16,12 +49,11 @@ const Key = ({ letter, onClick }: IProps) => {
 		<button
 			type='button'
 			onClick={handleOnClick}
-			className={`flex items-center justify-center p-2 border rounded-md text-xl font-semibold hover:cursor-pointer hover:border-gray-400 transition-colors ${
-				(typeof letter === 'string' && letter.length === 1) ||
-				letter === 'Backspace'
-					? 'w-12 h-12'
-					: ''
-			}`}
+			className={`flex items-center justify-center p-2 rounded-md text-xl font-semibold transition-colors ${getKeyStyle(
+				letter,
+				keysPressed
+			)}`}
+			disabled={keysPressed[letter] === LetterState.MISS}
 		>
 			{letter === 'Backspace' ? (
 				<svg

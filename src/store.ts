@@ -16,6 +16,7 @@ export type IGuess = {
 export type IStoreState = {
 	answer: string;
 	alreadyGuessed: IGuess[];
+	keysPressed: Record<string, LetterState>;
 	addGuess: (guess: string) => void;
 	gameOver: boolean;
 	newGame: () => void;
@@ -28,9 +29,16 @@ const useStore = create<IStoreState>(
 			answer: getRandomWord(),
 			alreadyGuessed: [],
 			gameOver: false,
+			keysPressed: {},
 			addGuess: (guess: string) =>
 				set((state) => {
 					const evaluatedGuess = evaluateGuess(state.answer, guess);
+
+					const _keysPressed = { ...state.keysPressed };
+					evaluatedGuess.forEach((letterState, index) => {
+						_keysPressed[guess[index]] = letterState;
+					});
+
 					return {
 						gameOver:
 							state.alreadyGuessed.length + 1 === MAX_GUESSES ||
@@ -41,14 +49,16 @@ const useStore = create<IStoreState>(
 								word: guess,
 								state: evaluatedGuess
 							}
-						]
+						],
+						keysPressed: _keysPressed
 					};
 				}),
 			newGame: () =>
 				set(() => ({
 					answer: getRandomWord(),
 					alreadyGuessed: [],
-					gameOver: false
+					gameOver: false,
+					keysPressed: {}
 				}))
 		}),
 		{

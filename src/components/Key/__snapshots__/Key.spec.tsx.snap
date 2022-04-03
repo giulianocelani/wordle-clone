@@ -2,7 +2,8 @@
 
 exports[`Key renders correct with multiple characters 1`] = `
 <button
-  className="flex items-center justify-center p-2 border rounded-md text-xl font-semibold hover:cursor-pointer hover:border-gray-400 transition-colors "
+  className="flex items-center justify-center p-2 rounded-md text-xl font-semibold transition-colors border hover:cursor-pointer hover:border-gray-400"
+  disabled={false}
   onClick={[Function]}
   type="button"
 >
@@ -12,7 +13,8 @@ exports[`Key renders correct with multiple characters 1`] = `
 
 exports[`Key renders correct with svg 1`] = `
 <button
-  className="flex items-center justify-center p-2 border rounded-md text-xl font-semibold hover:cursor-pointer hover:border-gray-400 transition-colors w-12 h-12"
+  className="flex items-center justify-center p-2 rounded-md text-xl font-semibold transition-colors w-12 h-12 border hover:cursor-pointer hover:border-gray-400"
+  disabled={false}
   onClick={[Function]}
   type="button"
 >
@@ -28,15 +30,5 @@ exports[`Key renders correct with svg 1`] = `
       fillRule="evenodd"
     />
   </svg>
-</button>
-`;
-
-exports[`Key renders correctly with single character 1`] = `
-<button
-  className="flex items-center justify-center p-2 border rounded-md text-xl font-semibold hover:cursor-pointer hover:border-gray-400 transition-colors w-12 h-12"
-  onClick={[Function]}
-  type="button"
->
-  A
 </button>
 `;
