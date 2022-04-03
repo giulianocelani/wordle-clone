@@ -1,16 +1,15 @@
+import { act } from 'react-dom/test-utils';
+
 import { mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 
-import useGuess from '../../hooks/useGuess';
+import useStore from '../../store';
+import { LetterState } from '../../utils';
 
 import Grid from '.';
 
-jest.mock('../../hooks/useGuess');
-const mockUseGuess = useGuess as jest.MockedFunction<typeof useGuess>;
-
 describe('Grid', () => {
-	mockUseGuess.mockReturnValue(['', jest.fn()]);
-	let wrapper = mount(<Grid />);
+	let wrapper = mount(<Grid guess='' setGuess={jest.fn()} />);
 
 	it('default renders correctly', () => {
 		expect(toJson(wrapper, { mode: 'deep' })).toMatchSnapshot();
@@ -24,10 +23,28 @@ describe('Grid', () => {
 	});
 
 	it('renders current guess', () => {
-		mockUseGuess.mockReturnValue(['HELL', jest.fn()]);
-		wrapper = mount(<Grid />);
+		act(() => {
+			useStore.setState({
+				alreadyGuessed: [
+					{
+						word: 'HELLO',
+						state: [
+							LetterState.MISS,
+							LetterState.MATCH,
+							LetterState.MATCH,
+							LetterState.MATCH,
+							LetterState.MATCH
+						]
+					}
+				],
+				answer: 'BELLO'
+			});
+		});
+
+		wrapper = mount(<Grid guess='BELL' setGuess={jest.fn()} />);
+		expect(toJson(wrapper, { mode: 'deep' })).toMatchSnapshot();
 		expect(
-			wrapper.find('div.grid-rows-6').childAt(0).props().guess.word
-		).toEqual('HELL');
+			wrapper.find('div.grid-rows-6').childAt(1).props().guess.word
+		).toEqual('BELL');
 	});
 });

@@ -244,3 +244,266 @@ exports[`Grid default renders correctly 1`] = `
   </div>
 </div>
 `;
+
+exports[`Grid renders current guess 1`] = `
+<div
+  className="flex-1 flex flex-col items-center justify-start py-5 mx-auto"
+>
+  <div
+    className="grid grid-rows-6 gap-4"
+  >
+    <div
+      className="grid grid-cols-5 gap-4 "
+    >
+      <div
+        className="border rounded-md flex items-center justify-center w-16 h-16 bg-gray-500 border-gray-500"
+      >
+        <h2
+          className="font-semibold text-3xl text-white"
+        >
+          H
+        </h2>
+      </div>
+      <div
+        className="border rounded-md flex items-center justify-center w-16 h-16 bg-green-500 border-green-500"
+      >
+        <h2
+          className="font-semibold text-3xl text-white"
+        >
+          E
+        </h2>
+      </div>
+      <div
+        className="border rounded-md flex items-center justify-center w-16 h-16 bg-green-500 border-green-500"
+      >
+        <h2
+          className="font-semibold text-3xl text-white"
+        >
+          L
+        </h2>
+      </div>
+      <div
+        className="border rounded-md flex items-center justify-center w-16 h-16 bg-green-500 border-green-500"
+      >
+        <h2
+          className="font-semibold text-3xl text-white"
+        >
+          L
+        </h2>
+      </div>
+      <div
+        className="border rounded-md flex items-center justify-center w-16 h-16 bg-green-500 border-green-500"
+      >
+        <h2
+          className="font-semibold text-3xl text-white"
+        >
+          O
+        </h2>
+      </div>
+    </div>
+    <div
+      className="grid grid-cols-5 gap-4 "
+    >
+      <div
+        className="border rounded-md flex items-center justify-center w-16 h-16 "
+      >
+        <h2
+          className="font-semibold text-3xl "
+        >
+          B
+        </h2>
+      </div>
+      <div
+        className="border rounded-md flex items-center justify-center w-16 h-16 "
+      >
+        <h2
+          className="font-semibold text-3xl "
+        >
+          E
+        </h2>
+      </div>
+      <div
+        className="border rounded-md flex items-center justify-center w-16 h-16 "
+      >
+        <h2
+          className="font-semibold text-3xl "
+        >
+          L
+        </h2>
+      </div>
+      <div
+        className="border rounded-md flex items-center justify-center w-16 h-16 "
+      >
+        <h2
+          className="font-semibold text-3xl "
+        >
+          L
+        </h2>
+      </div>
+      <div
+        className="border rounded-md flex items-center justify-center w-16 h-16 "
+      >
+        <h2
+          className="font-semibold text-3xl "
+        />
+      </div>
+    </div>
+    <div
+      className="grid grid-cols-5 gap-4 "
+    >
+      <div
+        className="border rounded-md flex items-center justify-center w-16 h-16 "
+      >
+        <h2
+          className="font-semibold text-3xl "
+        />
+      </div>
+      <div
+        className="border rounded-md flex items-center justify-center w-16 h-16 "
+      >
+        <h2
+          className="font-semibold text-3xl "
+        />
+      </div>
+      <div
+        className="border rounded-md flex items-center justify-center w-16 h-16 "
+      >
+        <h2
+          className="font-semibold text-3xl "
+        />
+      </div>
+      <div
+        className="border rounded-md flex items-center justify-center w-16 h-16 "
+      >
+        <h2
+          className="font-semibold text-3xl "
+        />
+      </div>
+      <div
+        className="border rounded-md flex items-center justify-center w-16 h-16 "
+      >
+        <h2
+          className="font-semibold text-3xl "
+        />
+      </div>
+    </div>
+    <div
+      className="grid grid-cols-5 gap-4 "
+    >
+      <div
+        className="border rounded-md flex items-center justify-center w-16 h-16 "
+      >
+        <h2
+          className="font-semibold text-3xl "
+        />
+      </div>
+      <div
+        className="border rounded-md flex items-center justify-center w-16 h-16 "
+      >
+        <h2
+          className="font-semibold text-3xl "
+        />
+      </div>
+      <div
+        className="border rounded-md flex items-center justify-center w-16 h-16 "
+      >
+        <h2
+          className="font-semibold text-3xl "
+        />
+      </div>
+      <div
+        className="border rounded-md flex items-center justify-center w-16 h-16 "
+      >
+        <h2
+          className="font-semibold text-3xl "
+        />
+      </div>
+      <div
+        className="border rounded-md flex items-center justify-center w-16 h-16 "
+      >
+        <h2
+          className="font-semibold text-3xl "
+        />
+      </div>
+    </div>
+    <div
+      className="grid grid-cols-5 gap-4 "
+    >
+      <div
+        className="border rounded-md flex items-center justify-center w-16 h-16 "
+      >
+        <h2
+          className="font-semibold text-3xl "
+        />
+      </div>
+      <div
+        className="border rounded-md flex items-center justify-center w-16 h-16 "
+      >
+        <h2
+          className="font-semibold text-3xl "
+        />
+      </div>
+      <div
+        className="border rounded-md flex items-center justify-center w-16 h-16 "
+      >
+        <h2
+          className="font-semibold text-3xl "
+        />
+      </div>
+      <div
+        className="border rounded-md flex items-center justify-center w-16 h-16 "
+      >
+        <h2
+          className="font-semibold text-3xl "
+        />
+      </div>
+      <div
+        className="border rounded-md flex items-center justify-center w-16 h-16 "
+      >
+        <h2
+          className="font-semibold text-3xl "
+        />
+      </div>
+    </div>
+    <div
+      className="grid grid-cols-5 gap-4 "
+    >
+      <div
+        className="border rounded-md flex items-center justify-center w-16 h-16 "
+      >
+        <h2
+          className="font-semibold text-3xl "
+        />
+      </div>
+      <div
+        className="border rounded-md flex items-center justify-center w-16 h-16 "
+      >
+        <h2
+          className="font-semibold text-3xl "
+        />
+      </div>
+      <div
+        className="border rounded-md flex items-center justify-center w-16 h-16 "
+      >
+        <h2
+          className="font-semibold text-3xl "
+        />
+      </div>
+      <div
+        className="border rounded-md flex items-center justify-center w-16 h-16 "
+      >
+        <h2
+          className="font-semibold text-3xl "
+        />
+      </div>
+      <div
+        className="border rounded-md flex items-center justify-center w-16 h-16 "
+      >
+        <h2
+          className="font-semibold text-3xl "
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;

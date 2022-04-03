@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 
-import { useGuess } from '../../hooks';
 import usePrevious from '../../hooks/usePrevious';
 import useStore, { MAX_GUESSES } from '../../store';
 import { isValidWord, MAX_WORD_LENGTH } from '../../utils';
@@ -14,10 +13,14 @@ const INITIAL_STATE: IState = {
 	isGuessInvalid: false
 };
 
-const Grid = () => {
+type IProps = {
+	guess: string;
+	setGuess: React.Dispatch<React.SetStateAction<string>>;
+};
+
+const Grid = ({ guess, setGuess }: IProps) => {
 	const [{ isGuessInvalid }, setState] = useState(INITIAL_STATE);
 	const { alreadyGuessed, addGuess } = useStore();
-	const [guess, setGuess] = useGuess();
 	const previousGuess = usePrevious(guess);
 
 	useEffect(() => {
