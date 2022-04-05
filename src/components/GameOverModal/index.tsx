@@ -21,10 +21,10 @@ const GameOverModal = () => {
 				<div className='min-h-screen px-4 text-center'>
 					<Transition.Child
 						as={Fragment}
-						enter='ease-out duration-300'
+						enter='ease-out duration-500'
 						enterFrom='opacity-0'
 						enterTo='opacity-100'
-						leave='ease-in duration-200'
+						leave='ease-in duration-500'
 						leaveFrom='opacity-100'
 						leaveTo='opacity-0'
 					>
@@ -38,10 +38,10 @@ const GameOverModal = () => {
 					</span>
 					<Transition.Child
 						as={Fragment}
-						enter='ease-out duration-300'
+						enter='ease-out duration-1000'
 						enterFrom='opacity-0 scale-95'
 						enterTo='opacity-100 scale-100'
-						leave='ease-in duration-200'
+						leave='ease-in duration-1000'
 						leaveFrom='opacity-100 scale-100'
 						leaveTo='opacity-0 scale-95'
 					>
@@ -89,7 +89,9 @@ const GameOverModal = () => {
 							</Dialog.Title>
 							<div className='flex justify-center items-center flex-col space-y-3'>
 								<h1 className='text-2xl font-semibold text-gray-900 lg:text-2xl'>
-									{`You ${gameStatus.state === GameState.WON ? 'Won' : 'Lost'}`}
+									{`You ${
+										gameStatus.state === GameState.WON ? 'guessed it' : 'Lost'
+									}`}
 								</h1>
 								{gameStatus.state === GameState.LOST && (
 									<p className='text-sm leading-relaxed text-gray-500'>

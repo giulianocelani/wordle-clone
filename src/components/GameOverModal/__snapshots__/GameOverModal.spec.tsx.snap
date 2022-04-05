@@ -15,10 +15,10 @@ exports[`GameOverModal renders correctly with IN_PROGRESS state 1`] = `
     >
       <Child
         as={Symbol(react.fragment)}
-        enter="ease-out duration-300"
+        enter="ease-out duration-500"
         enterFrom="opacity-0"
         enterTo="opacity-100"
-        leave="ease-in duration-200"
+        leave="ease-in duration-500"
         leaveFrom="opacity-100"
         leaveTo="opacity-0"
       >
@@ -34,10 +34,10 @@ exports[`GameOverModal renders correctly with IN_PROGRESS state 1`] = `
       </span>
       <Child
         as={Symbol(react.fragment)}
-        enter="ease-out duration-300"
+        enter="ease-out duration-1000"
         enterFrom="opacity-0 scale-95"
         enterTo="opacity-100 scale-100"
-        leave="ease-in duration-200"
+        leave="ease-in duration-1000"
         leaveFrom="opacity-100 scale-100"
         leaveTo="opacity-0 scale-95"
       >
@@ -91,10 +91,10 @@ exports[`GameOverModal renders correctly with LOST state 1`] = `
     >
       <Child
         as={Symbol(react.fragment)}
-        enter="ease-out duration-300"
+        enter="ease-out duration-500"
         enterFrom="opacity-0"
         enterTo="opacity-100"
-        leave="ease-in duration-200"
+        leave="ease-in duration-500"
         leaveFrom="opacity-100"
         leaveTo="opacity-0"
       >
@@ -110,10 +110,10 @@ exports[`GameOverModal renders correctly with LOST state 1`] = `
       </span>
       <Child
         as={Symbol(react.fragment)}
-        enter="ease-out duration-300"
+        enter="ease-out duration-1000"
         enterFrom="opacity-0 scale-95"
         enterTo="opacity-100 scale-100"
-        leave="ease-in duration-200"
+        leave="ease-in duration-1000"
         leaveFrom="opacity-100 scale-100"
         leaveTo="opacity-0 scale-95"
       >
@@ -196,10 +196,10 @@ exports[`GameOverModal renders correctly with WON state 1`] = `
     >
       <Child
         as={Symbol(react.fragment)}
-        enter="ease-out duration-300"
+        enter="ease-out duration-500"
         enterFrom="opacity-0"
         enterTo="opacity-100"
-        leave="ease-in duration-200"
+        leave="ease-in duration-500"
         leaveFrom="opacity-100"
         leaveTo="opacity-0"
       >
@@ -215,10 +215,10 @@ exports[`GameOverModal renders correctly with WON state 1`] = `
       </span>
       <Child
         as={Symbol(react.fragment)}
-        enter="ease-out duration-300"
+        enter="ease-out duration-1000"
         enterFrom="opacity-0 scale-95"
         enterTo="opacity-100 scale-100"
-        leave="ease-in duration-200"
+        leave="ease-in duration-1000"
         leaveFrom="opacity-100 scale-100"
         leaveTo="opacity-0 scale-95"
       >
@@ -254,7 +254,7 @@ exports[`GameOverModal renders correctly with WON state 1`] = `
             <h1
               className="text-2xl font-semibold text-gray-900 lg:text-2xl"
             >
-              You Won
+              You guessed it
             </h1>
           </div>
           <div

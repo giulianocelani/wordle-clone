@@ -27,7 +27,7 @@ describe('GameOverModal', () => {
 		expect(wrapper.props().show).toBe(true);
 
 		expect(wrapper.find('button').text()).toBe('New Game');
-		expect(wrapper.find('h1').text()).toBe('You Won');
+		expect(wrapper.find('h1').text()).toBe('You guessed it');
 	});
 
 	it('renders correctly with LOST state', async () => {
