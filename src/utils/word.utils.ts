@@ -1,4 +1,4 @@
-import words from '../5-letters.json';
+import words from './lists/5-letters.json';
 
 const MAX_WORD_LENGTH = 5;
 
