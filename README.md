@@ -1,10 +1,9 @@
 # Wordle Clone
 
-### Tools used
+- Typescript
+- React
+- Zustand
+- Encrypted Local Storage
+- Tailwind CSS
 
-* Typescript
-* React
-* Zustand
-* Encrypted Local Storage
-* Tailwind CSS
-
+![Preview](./preview.png)
