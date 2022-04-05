@@ -22,12 +22,13 @@ function evaluateGuess(answer: string, guess: string): LetterState[] {
 	const lettersToCheck = answer.split('');
 	const guessLetters = guess.split('');
 
-	guessLetters.forEach((_letter, i) => {
-		if (answer[i] === guessLetters[i]) {
+	guessLetters.forEach((letter, i) => {
+		if (answer[i] === letter) {
 			result[i] = LetterState.MATCH;
-			lettersToCheck.splice(i, 1);
+			lettersToCheck.splice(i === lettersToCheck.length ? i - 1 : i, 1);
 		}
 	});
+
 	guessLetters.forEach((letter, i) => {
 		if (lettersToCheck.includes(letter) && result[i] !== LetterState.MATCH) {
 			result[i] = LetterState.PRESENT;

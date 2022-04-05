@@ -36,13 +36,21 @@ describe('word-utils', () => {
 			expect(result).toEqual([]);
 		});
 		it('when 2 letters are present but answer has only 1 of those letters', () => {
-			const result = evaluateGuess('relax', 'sweep');
+			let result = evaluateGuess('relax', 'sweep');
 			expect(result).toEqual([
 				LetterState.MISS,
 				LetterState.MISS,
 				LetterState.PRESENT,
 				LetterState.MISS,
 				LetterState.MISS
+			]);
+			result = evaluateGuess('grook', 'knock');
+			expect(result).toEqual([
+				LetterState.MISS,
+				LetterState.MISS,
+				LetterState.MATCH,
+				LetterState.MISS,
+				LetterState.MATCH
 			]);
 		});
 		it('when 1 letter matches but guess has more of the same letter', () => {
