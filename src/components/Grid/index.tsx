@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { usePrevious } from '../../hooks';
+import { useNotification, usePrevious } from '../../hooks';
 import useStore, { MAX_GUESSES } from '../../store';
 import { isValidWord, MAX_WORD_LENGTH } from '../../utils';
 import Guess from '../Guess';
@@ -22,15 +22,23 @@ const Grid = ({ guess, setGuess }: IProps) => {
 	const [{ isGuessInvalid }, setState] = useState(INITIAL_STATE);
 	const { alreadyGuessed, addGuess } = useStore();
 	const previousGuess = usePrevious(guess);
+	const notification = useNotification();
 
 	useEffect(() => {
 		if (guess.length === 0 && previousGuess?.length === MAX_WORD_LENGTH) {
 			if (isValidWord(previousGuess)) {
-				setState({ isGuessInvalid: false });
-				addGuess(previousGuess);
+				if (alreadyGuessed.map((g) => g.word).includes(previousGuess)) {
+					setState({ isGuessInvalid: true });
+					setGuess(previousGuess);
+					notification.show(`You already guessed ${previousGuess}`);
+				} else {
+					setState({ isGuessInvalid: false });
+					addGuess(previousGuess);
+				}
 			} else {
 				setState({ isGuessInvalid: true });
 				setGuess(previousGuess);
+				notification.show(`${previousGuess} is not a valid word`);
 			}
 		}
 	}, [guess]);
