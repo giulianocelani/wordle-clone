@@ -1,25 +1,18 @@
-import { Fragment, useState } from 'react';
+import { Fragment } from 'react';
 
 import { Dialog, Transition } from '@headlessui/react';
 
-import useStore from '../../store';
+import useStore, { GameState } from '../../store';
 
 const GameOverModal = () => {
-	const { gameOver, newGame, answer } = useStore();
-	const [showAnswer, setShowAnswer] = useState(true);
-
-	const onNewGame = () => {
-		setShowAnswer(false);
-
-		setTimeout(() => {
-			setShowAnswer(true);
-		}, 1000);
-
-		newGame();
-	};
+	const { gameStatus, newGame, answer } = useStore();
 
 	return (
-		<Transition appear show={gameOver} as={Fragment}>
+		<Transition
+			appear
+			show={gameStatus.gameOver}
+			as={gameStatus.state !== GameState.IN_PROGRESS ? Fragment : undefined}
+		>
 			<Dialog
 				as='div'
 				className='fixed inset-0 z-10 overflow-y-auto'
@@ -52,27 +45,64 @@ const GameOverModal = () => {
 						leaveFrom='opacity-100 scale-100'
 						leaveTo='opacity-0 scale-95'
 					>
-						<div className='inline-block w-full max-w-md my-8 overflow-hidden rounded-lg text-left align-middle transition-all transform bg-white shadow-2xl'>
+						<div className='p-4 space-y-5 inline-block w-full max-w-md my-8 overflow-hidden rounded-lg text-left align-middle transition-all transform bg-white shadow-2xl'>
 							<Dialog.Title
 								as='div'
-								className='flex justify-between items-start p-5 border-b'
+								className='flex justify-center items-center'
 							>
-								<h2 className='text-xl font-semibold text-gray-900 lg:text-2xl'>
-									Game Over
-								</h2>
+								{gameStatus.state === GameState.WON && (
+									<div className='rounded-full p-3 bg-green-100'>
+										<svg
+											xmlns='http://www.w3.org/2000/svg'
+											className='text-green-600 h-8 w-8'
+											fill='none'
+											viewBox='0 0 24 24'
+											stroke='currentColor'
+											strokeWidth='2'
+										>
+											<path
+												strokeLinecap='round'
+												strokeLinejoin='round'
+												d='M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z'
+											/>
+										</svg>
+									</div>
+								)}
+								{gameStatus.state === GameState.LOST && (
+									<div className='rounded-full p-3 bg-red-100'>
+										<svg
+											xmlns='http://www.w3.org/2000/svg'
+											className='text-red-600 h-8 w-8'
+											fill='none'
+											viewBox='0 0 24 24'
+											stroke='currentColor'
+											strokeWidth='2'
+										>
+											<path
+												strokeLinecap='round'
+												strokeLinejoin='round'
+												d='M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z'
+											/>
+										</svg>
+									</div>
+								)}
 							</Dialog.Title>
-							<div className='p-5 space-y-6'>
-								{showAnswer && (
-									<p className='text-base leading-relaxed text-gray-500'>
-										{`Answer: ${answer}`}
+							<div className='flex justify-center items-center flex-col space-y-3'>
+								<h1 className='text-2xl font-semibold text-gray-900 lg:text-2xl'>
+									{`You ${gameStatus.state === GameState.WON ? 'Won' : 'Lost'}`}
+								</h1>
+								{gameStatus.state === GameState.LOST && (
+									<p className='text-sm leading-relaxed text-gray-500'>
+										The correct answer was
+										<span className='font-bold'>{` ${answer}`}</span>
 									</p>
 								)}
 							</div>
-							<div className='flex items-center justify-center p-5 space-x-2'>
+							<div className='flex items-center justify-center space-x-2'>
 								<button
 									type='button'
-									className='inline-flex justify-center px-4 py-2 text-sm font-medium text-blue-900 bg-blue-100 border border-transparent rounded-md hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500'
-									onClick={onNewGame}
+									className='w-full inline-flex justify-center px-4 py-2 text-sm font-medium text-gray-900 bg-gray-100 border border-transparent rounded-md hover:bg-gray-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-gray-500'
+									onClick={newGame}
 								>
 									New Game
 								</button>

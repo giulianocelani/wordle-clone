@@ -13,12 +13,23 @@ export type IGuess = {
 	state?: LetterState[];
 };
 
+export enum GameState {
+	WON,
+	LOST,
+	IN_PROGRESS
+}
+
+type IGameStatus = {
+	gameOver: boolean;
+	state: GameState;
+};
+
 export type IStoreState = {
 	answer: string;
 	alreadyGuessed: IGuess[];
 	keysPressed: Record<string, LetterState>;
 	addGuess: (guess: string) => void;
-	gameOver: boolean;
+	gameStatus: IGameStatus;
 	newGame: () => void;
 };
 
@@ -28,7 +39,10 @@ const useStore = create<IStoreState>(
 		(set, _get) => ({
 			answer: getRandomWord(),
 			alreadyGuessed: [],
-			gameOver: false,
+			gameStatus: {
+				gameOver: false,
+				state: GameState.IN_PROGRESS
+			},
 			keysPressed: {},
 			addGuess: (guess: string) =>
 				set((state) => {
@@ -36,13 +50,23 @@ const useStore = create<IStoreState>(
 
 					const _keysPressed = { ...state.keysPressed };
 					evaluatedGuess.forEach((letterState, index) => {
-						_keysPressed[guess[index]] = letterState;
+						if (_keysPressed[guess[index]] !== LetterState.MATCH) {
+							_keysPressed[guess[index]] = letterState;
+						}
 					});
 
+					const _gameStatus = { ...state.gameStatus };
+
+					if (evaluatedGuess.every((s) => s === LetterState.MATCH)) {
+						_gameStatus.gameOver = true;
+						_gameStatus.state = GameState.WON;
+					} else if (state.alreadyGuessed.length + 1 === MAX_GUESSES) {
+						_gameStatus.gameOver = true;
+						_gameStatus.state = GameState.LOST;
+					}
+
 					return {
-						gameOver:
-							state.alreadyGuessed.length + 1 === MAX_GUESSES ||
-							evaluatedGuess.every((s) => s === LetterState.MATCH),
+						gameStatus: _gameStatus,
 						alreadyGuessed: [
 							...state.alreadyGuessed,
 							{
@@ -57,7 +81,10 @@ const useStore = create<IStoreState>(
 				set(() => ({
 					answer: getRandomWord(),
 					alreadyGuessed: [],
-					gameOver: false,
+					gameStatus: {
+						gameOver: false,
+						state: GameState.IN_PROGRESS
+					},
 					keysPressed: {}
 				}))
 		}),
@@ -86,7 +113,5 @@ const useStore = create<IStoreState>(
 		}
 	)
 );
-
-// useStore.persist.clearStorage();
 
 export default useStore;
