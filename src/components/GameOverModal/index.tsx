@@ -90,7 +90,9 @@ const GameOverModal = () => {
 							<div className='flex justify-center items-center flex-col space-y-3'>
 								<h1 className='text-2xl font-semibold text-gray-900 lg:text-2xl'>
 									{`You ${
-										gameStatus.state === GameState.WON ? 'guessed it' : 'Lost'
+										gameStatus.state === GameState.WON
+											? 'guessed it'
+											: 'ran out of guesses'
 									}`}
 								</h1>
 								{gameStatus.state === GameState.LOST && (
