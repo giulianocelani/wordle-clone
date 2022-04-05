@@ -2,10 +2,11 @@ import { Fragment } from 'react';
 
 import { Transition } from '@headlessui/react';
 
-import { useNotification } from '../../hooks';
+import { useNotification, usePrevious } from '../../hooks';
 
 const InvalidNotification = () => {
 	const { notification } = useNotification();
+	const previous = usePrevious(notification?.message);
 
 	return (
 		<div
@@ -16,12 +17,12 @@ const InvalidNotification = () => {
 				<Transition
 					show={notification !== null}
 					as={Fragment}
-					enter='transform ease-out duration-300 transition'
-					enterFrom='translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2'
-					enterTo='translate-y-0 opacity-100 sm:translate-x-0'
-					leave='transition ease-in duration-100'
-					leaveFrom='opacity-100'
-					leaveTo='opacity-0'
+					enter='transition ease duration-500 transform'
+					enterFrom='opacity-0 -translate-y-full'
+					enterTo='opacity-100 translate-y-0'
+					leave='transition ease duration-500 transform'
+					leaveFrom='opacity-100 translate-y-0'
+					leaveTo='opacity-0 -translate-y-full'
 				>
 					<div className='bg-white shadow-lg rounded-lg pointer-events-auto ring-1 ring-black ring-opacity-5 overflow-hidden'>
 						<div className='p-4'>
@@ -41,7 +42,7 @@ const InvalidNotification = () => {
 									/>
 								</svg>
 								<p className='text-sm'>
-									{notification && notification.message}
+									{notification ? notification.message : previous}
 								</p>
 							</div>
 						</div>

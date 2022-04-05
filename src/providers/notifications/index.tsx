@@ -21,12 +21,19 @@ type IProps = {
 const DURATION = 3000;
 
 const NotificationProvider = ({ children }: IProps) => {
+	let timeout: NodeJS.Timeout;
 	const [notification, setNotification] = useState<INotification>(null);
 
 	const show = (message) => {
-		setNotification({ message });
+		if (message === notification?.message) {
+			return;
+		}
+		if (notification) {
+			clearTimeout(timeout);
+		}
 
-		setTimeout(() => {
+		setNotification({ message });
+		timeout = setTimeout(() => {
 			setNotification(null);
 		}, DURATION);
 	};
