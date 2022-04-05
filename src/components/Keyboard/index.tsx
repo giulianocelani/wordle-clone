@@ -12,14 +12,14 @@ type IProps = {
 
 const Keyboard = ({ onLetterPressed }: IProps) => {
 	return (
-		<div className='flex-0 flex flex-col items-center py-5 mx-auto justify-end'>
-			<div className='flex flex-col space-y-2 items-center'>
+		<div className='h-1/4 w-full flex-0 flex flex-col items-center py-5 mx-auto justify-center px-4'>
+			<div className='w-full flex flex-col space-y-1 md:space-y-2 items-center'>
 				{KEYBOARD_KEYS.map((row, rowIndex) => (
 					<div
 						key={rowIndex}
 						className={`row-${
 							rowIndex + 1
-						} flex space-x-2 w-full items-center justify-center`}
+						} flex space-x-1 md:space-x-2 w-full items-center justify-center`}
 					>
 						{row.map((key, keyIndex) => (
 							<Key

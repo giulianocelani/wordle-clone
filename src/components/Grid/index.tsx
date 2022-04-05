@@ -61,8 +61,8 @@ const Grid = ({ guess, setGuess }: IProps) => {
 	guesses = guesses.concat(Array(numberOfGuessesRemaining).fill(''));
 
 	return (
-		<div className='flex-1 flex flex-col items-center justify-start py-5 mx-auto'>
-			<div className='grid grid-rows-6 gap-4'>
+		<div className='flex-1 flex flex-col items-center justify-center py-5 px-4 mx-auto w-10/12 md:1/3 lg:w-1/2 xl:w-1/3'>
+			<div className='w-full h-full max-h-[75%] md:max-h-full grid grid-rows-6 gap-2'>
 				{guesses.map((g, index) => (
 					<Guess
 						key={`guess-${index}`}

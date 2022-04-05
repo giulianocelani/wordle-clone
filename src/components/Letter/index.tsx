@@ -22,10 +22,10 @@ const Letter = ({ letter, state }: IProps) => {
 
 	return (
 		<div
-			className={`border rounded-md flex items-center justify-center w-16 h-16 ${getWrapperStyle()}`}
+			className={`border rounded-md flex items-center justify-center ${getWrapperStyle()}`}
 		>
 			<h2
-				className={`font-semibold text-3xl ${
+				className={`font-semibold text-xl md:text-2xl lg:text-3xl ${
 					state || keysPressed[letter] === LetterState.MISS ? 'text-white' : ''
 				}`}
 			>

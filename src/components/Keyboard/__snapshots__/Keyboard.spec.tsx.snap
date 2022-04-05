@@ -2,13 +2,13 @@
 
 exports[`Keyboard renders correctly 1`] = `
 <div
-  className="flex-0 flex flex-col items-center py-5 mx-auto justify-end"
+  className="h-1/4 w-full flex-0 flex flex-col items-center py-5 mx-auto justify-center px-4"
 >
   <div
-    className="flex flex-col space-y-2 items-center"
+    className="w-full flex flex-col space-y-1 md:space-y-2 items-center"
   >
     <div
-      className="row-1 flex space-x-2 w-full items-center justify-center"
+      className="row-1 flex space-x-1 md:space-x-2 w-full items-center justify-center"
       key="0"
     >
       <Key
@@ -63,7 +63,7 @@ exports[`Keyboard renders correctly 1`] = `
       />
     </div>
     <div
-      className="row-2 flex space-x-2 w-full items-center justify-center"
+      className="row-2 flex space-x-1 md:space-x-2 w-full items-center justify-center"
       key="1"
     >
       <Key
@@ -113,7 +113,7 @@ exports[`Keyboard renders correctly 1`] = `
       />
     </div>
     <div
-      className="row-3 flex space-x-2 w-full items-center justify-center"
+      className="row-3 flex space-x-1 md:space-x-2 w-full items-center justify-center"
       key="2"
     >
       <Key

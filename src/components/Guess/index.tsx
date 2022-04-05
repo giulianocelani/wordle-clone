@@ -17,7 +17,9 @@ const Guess = ({ guess, isInvalid }: IProps) => {
 
 	return (
 		<div
-			className={`grid grid-cols-5 gap-4 ${isInvalid ? 'animate-shake' : ''}`}
+			className={`w-full grid grid-cols-5 gap-2 ${
+				isInvalid ? 'animate-shake' : ''
+			}`}
 		>
 			{letterList.map((letter, index) => (
 				<Letter

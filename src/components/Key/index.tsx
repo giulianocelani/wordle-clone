@@ -14,13 +14,6 @@ const getKeyStyle = (
 ) => {
 	const styles: string[] = [];
 
-	if (
-		(typeof letter === 'string' && letter.length === 1) ||
-		letter === 'Backspace'
-	) {
-		styles.push('w-12 h-12');
-	}
-
 	if (keysPressed[letter]) {
 		styles.push('text-white');
 		if (keysPressed[letter] === LetterState.MISS) {
@@ -49,7 +42,9 @@ const Key = ({ letter, onClick }: IProps) => {
 		<button
 			type='button'
 			onClick={handleOnClick}
-			className={`flex items-center justify-center p-2 rounded-md text-xl font-semibold transition-colors ${getKeyStyle(
+			className={`flex items-center justify-center p-2 sm:p-3 md:p-5 max-h-12 ${
+				letter.length > 1 ? 'min-w-max' : 'min-w-[2rem]'
+			} rounded-md text-md lg:text-xl font-semibold transition-colors ${getKeyStyle(
 				letter,
 				keysPressed
 			)}`}
@@ -58,7 +53,7 @@ const Key = ({ letter, onClick }: IProps) => {
 			{letter === 'Backspace' ? (
 				<svg
 					xmlns='http://www.w3.org/2000/svg'
-					className='h-6'
+					className='h-5'
 					viewBox='0 0 20 20'
 					fill='currentColor'
 				>
@@ -69,7 +64,7 @@ const Key = ({ letter, onClick }: IProps) => {
 					/>
 				</svg>
 			) : (
-				letter
+				letter.toUpperCase()
 			)}
 		</button>
 	);
