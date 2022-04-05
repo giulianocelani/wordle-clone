@@ -118,42 +118,42 @@ exports[`Keyboard renders correctly 1`] = `
     >
       <Key
         key="2-key-0"
-        letter="Z"
+        letter="Backspace"
         onClick={[MockFunction]}
       />
       <Key
         key="2-key-1"
-        letter="X"
+        letter="Z"
         onClick={[MockFunction]}
       />
       <Key
         key="2-key-2"
-        letter="C"
+        letter="X"
         onClick={[MockFunction]}
       />
       <Key
         key="2-key-3"
-        letter="V"
+        letter="C"
         onClick={[MockFunction]}
       />
       <Key
         key="2-key-4"
-        letter="B"
+        letter="V"
         onClick={[MockFunction]}
       />
       <Key
         key="2-key-5"
-        letter="N"
+        letter="B"
         onClick={[MockFunction]}
       />
       <Key
         key="2-key-6"
-        letter="M"
+        letter="N"
         onClick={[MockFunction]}
       />
       <Key
         key="2-key-7"
-        letter="Backspace"
+        letter="M"
         onClick={[MockFunction]}
       />
       <Key

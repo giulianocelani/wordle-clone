@@ -27,15 +27,12 @@ describe('Keyboard', () => {
 			);
 		});
 
-		['Z', 'X', 'C', 'V', 'B', 'N', 'M'].forEach((letter, index) => {
-			expect(wrapper.find('div.row-3').childAt(index).props().letter).toBe(
-				letter
-			);
-		});
-
-		expect(wrapper.find('div.row-3').childAt(7).props().letter).toBe(
-			'Backspace'
+		['Backspace', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', 'Enter'].forEach(
+			(letter, index) => {
+				expect(wrapper.find('div.row-3').childAt(index).props().letter).toBe(
+					letter
+				);
+			}
 		);
-		expect(wrapper.find('div.row-3').childAt(8).props().letter).toBe('Enter');
 	});
 });
