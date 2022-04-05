@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import usePrevious from '../../hooks/usePrevious';
+import { usePrevious } from '../../hooks';
 import useStore, { MAX_GUESSES } from '../../store';
 import { isValidWord, MAX_WORD_LENGTH } from '../../utils';
 import Guess from '../Guess';

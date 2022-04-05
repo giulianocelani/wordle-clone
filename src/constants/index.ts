@@ -1,3 +1,3 @@
-/* eslint-disable import/prefer-default-export */
+import mappings from './mappings';
 
-export { default as mappings } from './mappings';
+export { mappings };
